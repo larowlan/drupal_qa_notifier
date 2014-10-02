@@ -1,0 +1,9 @@
+{
+  "name": "drupal_qa_notifier",
+  "title": "Drupal QA Notifier",
+  "id": "jid1-3UFpZHZzR5Cfyg",
+  "description": "Notifies when subscribed test runs complete",
+  "author": "larowlan based on chrome extension by justafish",
+  "license": "MPL 2.0",
+  "version": "0.1"
+}
