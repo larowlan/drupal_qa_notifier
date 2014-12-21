@@ -10,3 +10,10 @@ Origins
 ======
 
 This is a firefox version of the chrome plugin https://chrome.google.com/webstore/detail/drupal-qa-notifier/fcgjigcnkbhpjdhimnhlieoplnpoojhi that justafish wrote https://www.lullabot.com/blog/article/receive-desktop-notifications-chrome-drupalorg-tests
+
+Installation
+=======
+
+Download https://github.com/larowlan/drupal_qa_notifier/raw/master/drupal_qa_notifier.xpi and drag it into the Firefox extensions page.
+
+You will have to approve it. If you're not sure if you can trust the extension - read the source - https://github.com/larowlan/drupal_qa_notifier/blob/master/lib/main.js (:))
