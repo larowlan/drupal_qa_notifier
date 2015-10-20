@@ -1,15 +1,16 @@
 self.port.on("subscriptions", function(subscriptions) {
   var addButton = function (files, index, testID) {
-    var btn = document.createElement("button")
+    var t;
+    var btn = document.createElement("button");
     if (!subscriptions) {
       subscriptions = {}
     }
     if (subscriptions[testID] === "undefined" || subscriptions[testID] !== testID) {
-      var t = document.createTextNode("Subscribe");
+      t = document.createTextNode("Subscribe");
       btn.appendChild(t);
     }
     else {
-      var t = document.createTextNode("Subscribed");
+      t = document.createTextNode("Subscribed");
       btn.appendChild(t);
     }
 
@@ -22,27 +23,17 @@ self.port.on("subscriptions", function(subscriptions) {
     files[index].appendChild(btn);
   };
   // drupal.org Issues
-  var files = document.querySelectorAll('div.pift-operations');
-  console.log(files);
-  for (var i = 0; i < files.length; i++) {
-    var operationLinks = files[i].getElementsByTagName('a');
-    for (var j = 0; j < operationLinks.length; j++) {
-      if (operationLinks[j].innerHTML === 'View') {
-        var testID = operationLinks[j].getAttribute("href").split("/").pop();
-        addButton(files, i, testID);
-        break;
-      }
+  var subscribe = function(links) {
+    var testID, operationLinks;
+    for (var i = 0; i < links.length; i++) {
+      operationLinks = links[i].getElementsByTagName('a');
+      testID = operationLinks[0].getAttribute("href").split("/").pop();
+      addButton(links, i, testID);
     }
-  }
-
-// qa.drupal.org test page
-  var files = document.querySelectorAll('#pifr-status');
-  console.log(files);
-  if (files.length > 0) {
-    var pathArray = window.location.pathname.split( '/' );
-    var testID = pathArray[pathArray.length - 1];
-    addButton(files, 0, testID);
-  }
+  };
+  subscribe(document.querySelectorAll('ul.pift-ci-tests li.pift-ci-running'));
+  subscribe(document.querySelectorAll('ul.pift-ci-tests li.pift-ci-sent'));
+  subscribe(document.querySelectorAll('ul.pift-ci-tests li.pift-ci-queued'));
 });
 
 
